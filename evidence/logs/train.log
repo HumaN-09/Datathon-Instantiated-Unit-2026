@@ -1,4 +1,4 @@
-DATA_DIR = D:\VS_code\Projects\DataThon_2026\smart-swarm\data\raw
+DATA_DIR = D:\VS_code\Projects\DataThon_2026\data\raw
 
 --------------------------------------------------------------------------------------------
 A) PROFIT REGRESSION (train months 1-9 / test 10-12)
@@ -48,10 +48,10 @@ G) SELF-CHECK
   PASS  the bundle holds all six models
   PASS  no return, cancel or stockout model exists
 
-Saved bundle -> D:\VS_code\Projects\DataThon_2026\smart-swarm\ml_model\models\bundle.joblib
-Saved metrics -> D:\VS_code\Projects\DataThon_2026\smart-swarm\evidence\metrics.json
-Saved 18 charts -> D:\VS_code\Projects\DataThon_2026\smart-swarm\evidence\charts
+Saved bundle -> D:\VS_code\Projects\DataThon_2026\ml_model\models\bundle.joblib
+Saved metrics -> D:\VS_code\Projects\DataThon_2026\evidence\metrics.json
+Saved 18 charts -> D:\VS_code\Projects\DataThon_2026\evidence\charts
 
-real	0m7.887s
-user	0m0.000s
+real	0m7.765s
+user	0m0.015s
 sys	0m0.000s
