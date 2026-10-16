@@ -1,0 +1,57 @@
+DATA_DIR = D:\VS_code\Projects\DataThon_2026\smart-swarm\data\raw
+
+--------------------------------------------------------------------------------------------
+A) PROFIT REGRESSION (train months 1-9 / test 10-12)
+--------------------------------------------------------------------------------------------
+model                     r2_train        r2_test         mae_test        rmse_test       baseline_mae    
+LinearRegression          0.8225          0.8253          129.1230        177.2058        324.5111        
+DecisionTreeRegressor     0.9832          0.9816          39.4598         57.4553         324.5111        
+XGBRegressor              0.9994          0.9994          8.2041          10.7321         324.5111        
+
+--------------------------------------------------------------------------------------------
+B) WINNING REGION (region is an output; expect near-chance accuracy)
+--------------------------------------------------------------------------------------------
+model                     accuracy        macro_f1        log_loss        uniform_log_lossmajority_baseline
+LogisticRegression        0.1814          0.1365          1.6402          1.6094          0.2279          
+DecisionTreeClassifier    0.1953          0.1675          1.6585          1.6094          0.2279          
+XGBClassifier             0.1953          0.1918          1.7773          1.6094          0.2279          
+
+  chance = 0.200   best test accuracy = 0.195   majority baseline = 0.228   signal = none
+
+C) KRUSKAL-WALLIS on completed profit per sale across regions
+   overall p = 0.9549
+   Beauty         p = 0.4994
+   Electronics    p = 0.7024
+   Fashion        p = 0.1063
+   Grocery        p = 0.9345
+   Home           p = 0.4758
+   Sports         p = 0.0999
+
+   SHAP check: base + sum(shap) vs prediction, max abs error = 0.001099
+
+F) MODEL REGISTRY
+  model                   task            dataset         features  target   metric            role
+  LinearRegression        profit          Dataset 1       9 featuresprofit   R2, MAE           baseline, shows non-linearity
+  DecisionTreeRegressor   profit          Dataset 2       9 featuresprofit   R2, MAE           interpretable second opinion
+  XGBRegressor            profit          Dataset 2       9 featuresprofit   R2, MAE           PRODUCTION profit model, explained by SHAP
+  LogisticRegression      winning region  region_winners  4 featureswinner   accuracy, log-lossbaseline
+  DecisionTreeClassifier  winning region  region_winners  4 featureswinner   accuracy, log-lossbaseline
+  XGBClassifier           winning region  region_winners  4 featureswinner   accuracy, log-lossPRODUCTION region model (honest verdict rule)
+  not trained: returns, cancellations, stockouts (no signal)
+
+G) SELF-CHECK
+  PASS  profit features contain no region, unit_price, revenue, status or IDs
+  PASS  the winner classifier was trained only from region_winners
+  PASS  winner features are the 4 declared columns and carry no sale-level leakage
+  PASS  time split is months 1-9 train and 10-12 test
+  PASS  both XGB models used eval_set
+  PASS  the bundle holds all six models
+  PASS  no return, cancel or stockout model exists
+
+Saved bundle -> D:\VS_code\Projects\DataThon_2026\smart-swarm\ml_model\models\bundle.joblib
+Saved metrics -> D:\VS_code\Projects\DataThon_2026\smart-swarm\evidence\metrics.json
+Saved 18 charts -> D:\VS_code\Projects\DataThon_2026\smart-swarm\evidence\charts
+
+real	0m7.887s
+user	0m0.000s
+sys	0m0.000s
