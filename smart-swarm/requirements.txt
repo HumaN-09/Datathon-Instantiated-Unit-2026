@@ -1,0 +1,13 @@
+# Pinned to the versions this project was built and verified with (Python 3.14.3).
+pandas==2.3.3
+numpy==2.4.3
+scikit-learn==1.8.0
+xgboost==3.2.0
+scipy==1.17.1
+matplotlib==3.10.8
+seaborn==0.13.2
+joblib==1.5.3
+shap==0.54.1
+fastapi==0.141.1
+uvicorn==0.52.4
+pydantic==2.12.5

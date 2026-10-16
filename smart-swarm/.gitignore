@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Node
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Database: rebuilds in about a second with `python -m backend.build_db`
+*.db
+
+# Local logs, except the training log kept as evidence
+*.log
+!evidence/logs/train.log
+
+# OS
+.DS_Store
