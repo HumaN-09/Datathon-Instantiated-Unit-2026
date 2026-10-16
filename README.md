@@ -39,3 +39,9 @@ WHY THIS PROBLEM MATTERS:
 
 ❖ Target (Output): Finding unusual money leaks (using Isolation Forest) and predicting profit/return risk (using XGBoost). 
 
+
+💸 Smart Swarm: Enterprise Money Leak Diagnostic & Causal Decision-Support Engine
+Smart Swarm is an intelligent decision-support platform built for Datathon 2026 (Track 4: Business). It helps retail owners, category managers, and operations teams uncover hidden revenue leaks, diagnose root-cause drivers through machine learning, and simulate strategic interventions using counterfactual causal modeling.
+
+
+
