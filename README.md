@@ -12,7 +12,7 @@
 
 ## Screenshot
 
-Add a screenshot at `docs/screenshot.png` (the file in this repo is a labelled placeholder) and it will render here.
+Add a screenshot at `docs/screenshot.png` and it will render here. The `docs/` folder is not committed yet, so create it when you add the image.
 
 ## Tech stack
 
@@ -28,7 +28,7 @@ Add a screenshot at `docs/screenshot.png` (the file in this repo is a labelled p
 ## Folder structure
 
 ```
-smart-swarm/
+Datathon-Instantiated-Unit-2026/  (= the Smart Swarm project)
 ├── backend/            FastAPI app, config, database build and the query/explain layer
 │   ├── main.py         routes: /health, /api/*, plus /charts and the built frontend at /
 │   ├── config.py       finds the five CSVs, declares the feature columns and output paths
@@ -48,7 +48,6 @@ smart-swarm/
 ├── frontend/           React + TypeScript + Vite + Tailwind app
 │   ├── src/            components (Dashboard, Predict, Ask, Evidence) and lib/api.ts
 │   └── dist/           production build served by FastAPI at /
-├── docs/               screenshot and extras
 ├── requirements.txt    pinned Python dependencies
 └── README.md
 ```
@@ -67,7 +66,7 @@ smart-swarm/
 | inventory.csv | 5000 |
 | campaigns.csv | 1200 |
 
-`backend/config.py` searches those folders, prints the folder it chose and stops with a named error if a file is missing or its row count does not match. Here it finds `smart-swarm/data/raw/`.
+`backend/config.py` searches those folders, prints the folder it chose and stops with a named error if a file is missing or its row count does not match. Here it finds `data/raw/`.
 
 ## How to run
 
@@ -165,7 +164,7 @@ Not trained, on purpose: returns, cancellations and stockouts. See the honest fi
 
 | Problem | Fix |
 |---|---|
-| `STOP: the five raw CSVs are not present` | Put `customers.csv`, `products.csv`, `transactions.csv`, `inventory.csv`, `campaigns.csv` in `smart-swarm/data/raw/`, or in `smart-swarm/`, `smart-swarm/datasets/` or `smart-swarm/data/`. The error names the folders searched. |
+| `STOP: the five raw CSVs are not present` | Put `customers.csv`, `products.csv`, `transactions.csv`, `inventory.csv`, `campaigns.csv` in `data/raw/`, or in `data/`, `datasets/` or the project root. The error names the folders searched. |
 | Row-count mismatch at startup | The app expects 3000 / 250 / 18000 / 5000 / 1200 rows. The message prints expected vs actual per file. |
 | Port 8000 already in use | `uvicorn backend.main:app --port 8001`, or stop the old process. On Windows: `netstat -ano \| findstr :8000` then `taskkill /PID <pid> /F`. |
 | `/api/*` answers `{"error": "Model bundle not loaded"}` | Train first: `python -m ml_model.train`. The 503 response repeats the fix. |

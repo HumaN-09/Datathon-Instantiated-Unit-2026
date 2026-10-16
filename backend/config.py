@@ -1,7 +1,8 @@
-"""All paths for Money Leak, defined with pathlib. Run modules from the money_leak folder.
+"""All paths for Money Leak, defined with pathlib. Run modules from the project root,
+for example `python -m backend.build_db` and `python -m ml_model.train`.
 
 The five raw CSVs are READ ONLY. They live wherever they live: this module searches
-./ then ./datasets/ then ./data/ (and ./data/raw, and their parents) and uses the first
+./ then ./datasets/ then ./data/ then ./data/raw (and their parents) and uses the first
 folder that holds all five files. Nothing is ever moved or regenerated here.
 """
 from pathlib import Path
